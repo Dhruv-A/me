@@ -40,7 +40,7 @@ def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    return {"lastName": data["results"][0]["name"]["last"], "password": data["results"][0]["login"]["password"], "postcodePlusID": int(data["results"][0]["id"]["value"]) + data["results"][0]["location"]["postcode"]}
 
 
 def wordy_pyramid():
@@ -78,6 +78,12 @@ def wordy_pyramid():
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
     pyramid = []
+    for i in range(3, 21, 2):
+        result = requests.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}")
+        pyramid.append(result.text)
+    for i in range(20, 3, -2):
+        result = requests.get(f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={i}")
+        pyramid.append(result.text)
 
     return pyramid
 
@@ -98,11 +104,28 @@ def pokedex(low=1, high=5):
     """
     id = 5
     url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+    max_height = 0
+    poke_details = {"name": None, "weight": None, "height": None}
     r = requests.get(url)
-    if r.status_code is 200:
+    if r.status_code == 200:
         the_json = json.loads(r.text)
+    
+    for i in range(low, high + 1):
+        url = f"https://pokeapi.co/api/v2/pokemon/{i}"
+        r = requests.get(url)
+        if r.status_code != 200:
+            raise Exception("Something went wrong :(")
+        data = json.loads(r.text)
 
-    return {"name": None, "weight": None, "height": None}
+        if data["height"] > max_height:
+            max_height = data["height"]
+            poke_details = {
+                "name": data["name"],
+                "weight": data["weight"],
+                "height": data["height"],
+            }
+
+    return poke_details
 
 
 def diarist():
@@ -122,8 +145,13 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
-    pass
-
+    counter = 0
+    with open("Trispokedovetiles(laser).gcode", "r") as f:
+        for line in f:
+            if line.startswith("M10 P1"):
+                counter += 1
+    with open("lasers.pew", "w") as f:
+        print(counter, file=f)
 
 if __name__ == "__main__":
     print(get_some_details())
