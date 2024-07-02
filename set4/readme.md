@@ -1,1 +1,1 @@
-TODO: Reflect on what you learned this week and what is still unclear.
+This week was about API calls and JSON. I think it would be nice if the JSON was formatted nicer - it could have been flattened better for the first exercise but in general, it was quite straightforward. Additionally, the API request questions were also straightforward, except for the pyramid requiring 19 -> 20 -> 18 for the tip. This confused me for a little while before I checked the lengths of the words in the middle.
