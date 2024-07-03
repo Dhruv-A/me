@@ -23,39 +23,38 @@ that easier for you by making the function stubs for the bits you need to do.
 Modify this function, don't write a whole new one.
 """
 
+BASE_URL = (
+    "https://us-central1-waldenpondpress.cloudfunctions.net/"
+    "give_me_a_word?wordlength={length}"
+)
 
 def wordy_pyramid():
-    baseURL = (
-        "https://us-central1-waldenpondpress.cloudfunctions.net/"
-        "give_me_a_word?wordlength={length}"
-    )
-    pyramid_list = []
-    for i in range(3, 21, 2):
-        url = baseURL.format(length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.text
-            pyramid_list.append(message)
-        else:
-            print("failed a request", r.status_code, i)
-    for i in range(20, 3, -2):
-        url = baseURL.format(length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.text
-            pyramid_list.append(message)
-        else:
-            print("failed a request", r.status_code, i)
-
-    return pyramid_list
+    list_asc = list_of_words_with_lengths(range(3, 21, 2))
+    list_dsc = list_of_words_with_lengths(range(20, 3, -2))
+    return list_asc + list_dsc
 
 
 def get_a_word_of_length_n(length):
-    pass
+    if length == 0:
+        return None
+    try:
+        length = int(length)
+    except Exception as e:
+        return None
+    url = BASE_URL.format(length=length)
+    r = requests.get(url)
+    if r.status_code == 200:
+        return r.text
+    else:
+        print("failed a request", r.status_code, length)
+        raise Exception('Not working')
 
 
 def list_of_words_with_lengths(list_of_lengths):
-    pass
+    word_list = []
+    for length in list_of_lengths:
+        word_list.append(get_a_word_of_length_n(length))
+    return word_list
 
 
 if __name__ == "__main__":
