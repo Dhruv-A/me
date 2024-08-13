@@ -1,1 +1,1 @@
-TODO: Reflect on what you learned this week and what is still unclear.
+This week I worked on the data project. I want to compare the data insights I am seeing to the CPI and found a statistical dataset on that. Will be interesting to present this.

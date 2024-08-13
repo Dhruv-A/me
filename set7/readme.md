@@ -1,1 +1,1 @@
-TODO: Reflect on what you learned this week and what is still unclear.
+I just started on my data project. I am looking at housing prices. It will be interesting to see what insights there are.

@@ -1,1 +1,1 @@
-TODO: Reflect on what you learned this week and what is still unclear.
+Had the quiz this week. The last question had an incorrect test which took a long time to debug. Next time, writing code more systematically rather than trying to finish it quickly would be a good idea.

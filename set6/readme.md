@@ -1,1 +1,1 @@
-TODO: Reflect on what you learned this week and what is still unclear.
+This week was flexiweek. I spent most of my time on other subjects because I had already finished the previous lab exercises. Starting work on the data project soon.
