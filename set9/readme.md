@@ -1,1 +1,3 @@
 This week I worked on the data project. I want to compare the data insights I am seeing to the CPI and found a statistical dataset on that. Will be interesting to present this.
+
+Deciding to use Polars instead of Pandas turned out to be a great choice. Although I haven't used it before, it is so much more intuitive and also become more widely used. It is easy to pick up and dataframes can be converted back to pandas dataframes with the to_pandas method which is assuring that if there are any drawbacks I can fall back to pandas.

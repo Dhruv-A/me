@@ -1,1 +1,3 @@
 Had the quiz this week. The last question had an incorrect test which took a long time to debug. Next time, writing code more systematically rather than trying to finish it quickly would be a good idea.
+
+I had teaching for 8 hours before the quiz which was tiring but nonetheless because it was straightforward, I think what I learnt was that it's important not to overthink questions and to start with really basic steps to build towards more complex solutions.

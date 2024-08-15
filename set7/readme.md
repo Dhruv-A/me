@@ -1,1 +1,1 @@
-I just started on my data project. I am looking at housing prices. It will be interesting to see what insights there are.
+I just started on my data project. I am looking at housing prices. It will be interesting to see what insights there are. I am going to use Polars instead of Pandas as I have used Pandas extensively and want to learn more about Polars. For visualisations I want to use Plotnine because I prefer its syntax and features over matplotlib. There may be some visualisations that I can't do with Plotnine and in those cases I can fall back to matplotlib.
